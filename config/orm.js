@@ -1,4 +1,4 @@
-const connection = require("connection");
+const connection = require("./connection");
 
 const selectAll = () => {
   connection.query("SELECT * FROM burgers", (err, res) => {
