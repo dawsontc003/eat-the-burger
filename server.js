@@ -36,6 +36,16 @@ app.get("/", (req, res) => {
       res.render("index", { burgers: data });
     }
   );
+  connection.query(
+    "SELECT * FROM burgers WHERE devoured=false;",
+    (err, data1) => {
+      if (err) throw err;
+
+      console.log(data1);
+
+      //   res.render("index", { burgers: data1 });
+    }
+  );
 });
 
 app.listen(PORT, () =>
