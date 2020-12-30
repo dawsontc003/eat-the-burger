@@ -23,11 +23,18 @@ app.set("view engine", "handlebars");
 //   },
 // ];
 
-const lunches = { burger: "Jr. Bacon Cheese Burger" };
+const lunches = [
+  {
+    burger: "Jr. Bacon Cheese Burger",
+  },
+  { burger: "double Bacon Burger" },
+];
 
 // Routes
 app.get("/", (req, res) => {
-  res.render("index", lunches);
+  res.render("index", {
+    foods: lunches,
+  });
 });
 
 // app.get("/weekend", (req, res) => {
