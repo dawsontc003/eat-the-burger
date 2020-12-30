@@ -1,6 +1,7 @@
 // Dependencies
 const express = require("express");
 const exphbs = require("express-handlebars");
+const connection = require("./config/connection");
 
 // Create an instance of the express app.
 const app = express();
@@ -32,8 +33,13 @@ const lunches = [
 
 // Routes
 app.get("/", (req, res) => {
-  res.render("index", {
-    foods: lunches,
+  connection.query("SELECT * FROM burgers;", (err, data) => {
+    if (err) throw err;
+
+    // return res.send(data);
+    console.log(data);
+
+    res.render("index", { burgers: data });
   });
 });
 
