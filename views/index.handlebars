@@ -10,10 +10,12 @@
 
 {{!-- <h1>Lunches for {{eater}}</h1> --}}
 
-<ul>
+<ul id="notDevoured">
     {{#each burgers }}
     <li>{{burger_name}} <button>Devour</button> </li>
-    {{/each}},
+    {{/each}}
+</ul>
+<ul id="devoured">
     {{#each burgers1 }}
     <li>{{burger_name}} </li>
     {{/each}}
