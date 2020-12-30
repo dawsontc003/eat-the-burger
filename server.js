@@ -24,6 +24,8 @@ app.set("view engine", "handlebars");
 //   },
 // ];
 
+let burgerAvailable;
+
 // Routes
 app.get("/", (req, res) => {
   connection.query(
@@ -31,9 +33,9 @@ app.get("/", (req, res) => {
     (err, data) => {
       if (err) throw err;
 
-      console.log(data);
+      burgerAvailable = data;
 
-      res.render("index", { burgers: data });
+      //   res.render("index", { burgers: data });
     }
   );
   connection.query(
@@ -42,8 +44,9 @@ app.get("/", (req, res) => {
       if (err) throw err;
 
       console.log(data1);
+      console.log(burgerAvailable);
 
-      //   res.render("index", { burgers: data1 });
+      res.render("index", { burgers: burgerAvailable, burgers1: data1 });
     }
   );
 });
