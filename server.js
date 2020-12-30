@@ -24,38 +24,20 @@ app.set("view engine", "handlebars");
 //   },
 // ];
 
-const lunches = [
-  {
-    burger: "Jr. Bacon Cheese Burger",
-  },
-  { burger: "double Bacon Burger" },
-];
-
 // Routes
 app.get("/", (req, res) => {
-  connection.query("SELECT * FROM burgers;", (err, data) => {
-    if (err) throw err;
+  connection.query(
+    "SELECT * FROM burgers WHERE devoured=true;",
+    (err, data) => {
+      if (err) throw err;
 
-    // return res.send(data);
-    console.log(data);
+      console.log(data);
 
-    res.render("index", { burgers: data });
-  });
+      res.render("index", { burgers: data });
+    }
+  );
 });
 
-// app.get("/weekend", (req, res) => {
-//   res.render("index", lunches[1]);
-// });
-
-// app.get("/lunches", (req, res) => {
-//   res.render("all-lunches", {
-//     foods: lunches,
-//     eater: "david",
-//   });
-// });
-
-// Start our server so that it can begin listening to client requests.
-// Log (server-side) when our server has started
 app.listen(PORT, () =>
   console.log(`Server listening on: http://localhost:${PORT}`)
 );
