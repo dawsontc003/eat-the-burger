@@ -12,9 +12,4 @@ CREATE TABLE burgers (
 );
 
 
-
-INSERT INTO burgers (burger_name, devoured)
-VALUES ("Double Cheese Burger", false),("Bacon Burger", true);
-
-
-SELECT * FROM burgers;
+-- SELECT * FROM burgers;

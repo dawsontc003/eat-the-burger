@@ -13,4 +13,26 @@ connection.connect((err) => {
   console.log(`Connect at ${connection.threadId}`);
 });
 
+// let burger = "Veggie burger";
+// const burger2 = false;
+
+// console.log(burger, burger2);
+
+const updateOne = () => {
+  let burger = "Veggie burger";
+  const burger2 = false;
+  connection.query(
+    "INSERT INTO burger SET ?",
+    {
+      burger,
+      burger2,
+    },
+    (err, res) => {
+      if (err) throw err;
+    }
+  );
+};
+
+//updateOne();
+
 module.exports = connection;
