@@ -12,7 +12,7 @@
 
 <ul id="notDevoured">
     {{#each burgers }}
-    <li>{{burger_name}} <button>Devour</button> </li>
+    <li>{{burger_name}} <button burgerid="{{id}}" class="devBurger">Devour</button> </li>
     {{/each}}
 </ul>
 <ul id="devoured">
@@ -20,3 +20,18 @@
     <li>{{burger_name}} </li>
     {{/each}}
 </ul>
+
+<script type="text/javascript">
+
+    // selecting devour button for JS functions
+    const devourBtns = document.querySelectorAll('.devBurger')
+
+    devourBtns.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const id = e.target.getAttribute('burgerid')
+            console.log("update plan id", id)
+
+
+        })
+    })
+</script>

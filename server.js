@@ -51,6 +51,42 @@ app.get("/", (req, res) => {
   );
 });
 
+// Update route for sql DB
+app.put("/update", (req, res) => {
+  const plan = 1;
+  const id = 1;
+  connection.query(
+    "UPDATE burgers SET devoured = ? WHERE id = ?",
+    [plan, id],
+    (err, result) => {
+      if (err) {
+        // If an error occurred, send a generic server failure
+        return res.status(500).end();
+      }
+      if (result.changedRows === 0) {
+        // If no rows were changed, then the ID must not exist, so 404
+        return res.status(404).end();
+      }
+      console.log(plan, id);
+      res.end();
+    }
+  );
+});
+
+// Post request listener
+// app.post("/", (req, res) => {
+//   //   connection.query(
+//   //     "INSERT INTO burgers (burger_name,devoured)",
+//   //     [req.body.BurgerType],
+//   //     (err, result) => {
+//   //       if (err) throw err;
+//   //       res.redirect("/");
+//   //     }
+//   //   );
+//   console.log([req.body.BurgerType]);
+//   res.redirect("/");
+// });
+
 app.listen(PORT, () =>
   console.log(`Server listening on: http://localhost:${PORT}`)
 );
