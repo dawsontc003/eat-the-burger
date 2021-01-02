@@ -38,10 +38,34 @@
         alt="Perfect Burger Image">
     <h1>Eat-Da-Burger</h1>
     {{{ body }}}
-    <form action="/" method="POST">
-        <textarea type="text" name="BurgerType" id="" cols="10" rows="5"></textarea>
+    <form>
+        <textarea type="text" name="burgerType"></textarea>
         <button type="submit" id="addBurger">Submit</button>
     </form>
 </body>
+
+<script type="text/javascript">
+
+    console.log("js working")
+    // targeting html submit button for textarea
+    const createBurger = document.getElementById('addBurger')
+
+    console.log(createBurger)
+
+    // Set up the event listener for the create button
+    createBurger.addEventListener('click', () => {
+        console.log("event listener working")
+        // e.preventDefault();
+
+        // Grabs the value of the textarea that goes by the name, "plan"
+        const newBurger = document.getElementsByName('burgerType').value
+
+        console.log(newBurger);
+
+
+    })
+
+
+</script>
 
 </html>

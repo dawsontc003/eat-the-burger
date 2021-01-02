@@ -59,16 +59,16 @@ app.put("/:id", (req, res) => {
   );
 });
 
-// Post request listener
+// //Post request listener
 // app.post("/", (req, res) => {
-//   //   connection.query(
-//   //     "INSERT INTO burgers (burger_name,devoured)",
-//   //     [req.body.BurgerType],
-//   //     (err, result) => {
-//   //       if (err) throw err;
-//   //       res.redirect("/");
-//   //     }
-//   //   );
+//   connection.query(
+//     "INSERT INTO burgers (burger_name,devoured) VALUES (?)",
+//     [req.body.burgerType, "0"],
+//     (err, result) => {
+//       if (err) throw err;
+//       res.redirect("/");
+//     }
+//   );
 //   console.log([req.body.BurgerType]);
 //   res.redirect("/");
 // });
