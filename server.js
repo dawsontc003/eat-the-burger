@@ -14,16 +14,6 @@ const PORT = process.env.PORT || 8000;
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// // Data
-// const lunches = [
-//   {
-//     lunch: "Beet & Goat Cheese Salad with minestrone soup.",
-//   },
-//   {
-//     lunch: "Pizza, two double veggie burgers, fries with a Big Gulp",
-//   },
-// ];
-
 let burgerAvailable;
 
 // Routes
@@ -34,8 +24,6 @@ app.get("/", (req, res) => {
       if (err) throw err;
 
       burgerAvailable = data;
-
-      //   res.render("index", { burgers: data });
     }
   );
   connection.query(
@@ -54,21 +42,21 @@ app.get("/", (req, res) => {
 // Update route for sql DB
 app.put("/:id", (req, res) => {
   console.log(req.params.id);
-  // connection.query(
-  //   "UPDATE burgers SET devoured = 0 WHERE id = ?",
-  //   [req.params.id],
-  //   (err, result) => {
-  //     if (err) {
-  //       // If an error occurred, send a generic server failure
-  //       return res.status(500).end();
-  //     }
-  //     if (result.affectedRows === 0) {
-  //       // If no rows were changed, then the ID must not exist, so 404
-  //       return res.status(404).end();
-  //     }
-  //     res.status(200).end();
-  //   }
-  // );
+  connection.query(
+    "UPDATE burgers SET devoured = 0 WHERE id = ?",
+    [req.params.id],
+    (err, result) => {
+      if (err) {
+        // If an error occurred, send a generic server failure
+        return res.status(500).end();
+      }
+      if (result.affectedRows === 0) {
+        // If no rows were changed, then the ID must not exist, so 404
+        return res.status(404).end();
+      }
+      res.status(200).end();
+    }
+  );
 });
 
 // Post request listener
