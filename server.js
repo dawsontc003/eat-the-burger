@@ -52,25 +52,23 @@ app.get("/", (req, res) => {
 });
 
 // Update route for sql DB
-app.put("/update", (req, res) => {
-  const plan = 1;
-  const id = 1;
-  connection.query(
-    "UPDATE burgers SET devoured = ? WHERE id = ?",
-    [plan, id],
-    (err, result) => {
-      if (err) {
-        // If an error occurred, send a generic server failure
-        return res.status(500).end();
-      }
-      if (result.changedRows === 0) {
-        // If no rows were changed, then the ID must not exist, so 404
-        return res.status(404).end();
-      }
-      console.log(plan, id);
-      res.end();
-    }
-  );
+app.put("/:id", (req, res) => {
+  console.log(req.params.id);
+  // connection.query(
+  //   "UPDATE burgers SET devoured = 0 WHERE id = ?",
+  //   [req.params.id],
+  //   (err, result) => {
+  //     if (err) {
+  //       // If an error occurred, send a generic server failure
+  //       return res.status(500).end();
+  //     }
+  //     if (result.affectedRows === 0) {
+  //       // If no rows were changed, then the ID must not exist, so 404
+  //       return res.status(404).end();
+  //     }
+  //     res.status(200).end();
+  //   }
+  // );
 });
 
 // Post request listener

@@ -31,6 +31,16 @@
             const id = e.target.getAttribute('burgerid')
             console.log("update plan id", id)
 
+            // Send the delete request
+            fetch(`/${id}`, {
+                method: 'PUT',
+            }).then(() => {
+                console.log(`updated ID: ${id}`)
+
+                // Reload the page
+                location.reload()
+            })
+
 
         })
     })
