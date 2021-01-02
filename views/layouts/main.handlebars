@@ -40,7 +40,7 @@
     {{{ body }}}
     <form>
         <textarea type="text" name="burgerType"></textarea>
-        <button type="submit" id="addBurger">Submit</button>
+        <button id="addBurger">Submit</button>
     </form>
 </body>
 
@@ -53,17 +53,11 @@
     console.log(createBurger)
 
     // Set up the event listener for the create button
-    createBurger.addEventListener('click', () => {
-        console.log("event listener working")
-        // e.preventDefault();
-
-        // Grabs the value of the textarea that goes by the name, "plan"
-        const newBurger = document.getElementsByName('burgerType').value
-
-        console.log(newBurger);
+    createBurger.addEventListener('submit', (e) => {
+        console.log("click working")
 
 
-    })
+    });
 
 
 </script>
