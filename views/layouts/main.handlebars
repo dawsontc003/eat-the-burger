@@ -39,7 +39,7 @@
     <h1>Eat-Da-Burger</h1>
     {{{ body }}}
     <form>
-        <textarea type="text" name="burgerType"></textarea>
+        <textarea type="text" name="burgerType" id="burgerValue"></textarea>
         <button id="addBurger">Submit</button>
     </form>
 </body>
@@ -50,14 +50,18 @@
     // targeting html submit button for textarea
     const createBurger = document.getElementById('addBurger')
 
+
     console.log(createBurger)
 
+
     // Set up the event listener for the create button
-    createBurger.addEventListener('submit', (e) => {
-        console.log("click working")
+    createBurger.addEventListener('click', () => {
+        event.preventDefault();
+        let newBurger = document.getElementById("burgerValue").value;
+        console.log(newBurger)
+        // Grabs the value of the textarea that goes by the name, "plan"
 
-
-    });
+    })
 
 
 </script>
