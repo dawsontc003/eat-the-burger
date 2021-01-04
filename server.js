@@ -2,6 +2,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const connection = require("./config/connection");
+var bodyParser = require("body-parser");
 
 // Create an instance of the express app.
 const app = express();
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 8000;
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.use(bodyParser.json());
 app.set("view engine", "handlebars");
 
 let burgerAvailable;
@@ -72,6 +74,11 @@ app.put("/:id", (req, res) => {
 //   console.log([req.body.BurgerType]);
 //   res.redirect("/");
 // });
+
+app.post("/", (req, res) => {
+  console.log(req.body.burger);
+  res.end();
+});
 
 app.listen(PORT, () =>
   console.log(`Server listening on: http://localhost:${PORT}`)

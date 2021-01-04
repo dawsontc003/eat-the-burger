@@ -57,9 +57,24 @@
     // Set up the event listener for the create button
     createBurger.addEventListener('click', () => {
         event.preventDefault();
-        let newBurger = document.getElementById("burgerValue").value;
-        console.log(newBurger)
-        // Grabs the value of the textarea that goes by the name, "plan"
+        let newBurger = {
+            burger: document.getElementById("burgerValue").value
+        }
+        console.log(JSON.stringify(newBurger));
+        // Grabs the value of the textarea and make a post request
+        fetch(`/`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newBurger)
+        }).then(() => {
+            console.log(newBurger)
+
+
+        })
+
 
     })
 
