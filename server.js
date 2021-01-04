@@ -33,9 +33,6 @@ app.get("/", (req, res) => {
     (err, data1) => {
       if (err) throw err;
 
-      console.log(data1);
-      console.log(burgerAvailable);
-
       res.render("index", { burgers: burgerAvailable, burgers1: data1 });
     }
   );
@@ -43,7 +40,6 @@ app.get("/", (req, res) => {
 
 // Update route for sql DB
 app.put("/:id", (req, res) => {
-  console.log(req.params.id);
   connection.query(
     "UPDATE burgers SET devoured = 0 WHERE id = ?",
     [req.params.id],
@@ -60,23 +56,8 @@ app.put("/:id", (req, res) => {
     }
   );
 });
-
-// //Post request listener
-// app.post("/", (req, res) => {
-//   connection.query(
-//     "INSERT INTO burgers (burger_name,devoured) VALUES (?)",
-//     [req.body.burgerType, "0"],
-//     (err, result) => {
-//       if (err) throw err;
-//       res.redirect("/");
-//     }
-//   );
-//   console.log([req.body.BurgerType]);
-//   res.redirect("/");
-// });
-
+// Request response for insert of new burger
 app.post("/", (req, res) => {
-  console.log(req.body.burger);
   let devoured = "1";
   connection.query(
     "INSERT INTO burgers SET burger_name = ?, devoured = ?",
