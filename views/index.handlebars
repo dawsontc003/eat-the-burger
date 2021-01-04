@@ -29,7 +29,7 @@
     devourBtns.forEach(button => {
         button.addEventListener('click', (e) => {
             const id = e.target.getAttribute('burgerid')
-            console.log("update plan id", id)
+
 
             // Send the delete request
             fetch(`/${id}`, {

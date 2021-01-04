@@ -77,7 +77,15 @@ app.put("/:id", (req, res) => {
 
 app.post("/", (req, res) => {
   console.log(req.body.burger);
-  res.end();
+  let devoured = "1";
+  connection.query(
+    "INSERT INTO burgers SET burger_name = ?, devoured = ?",
+    [req.body.burger, devoured],
+    (err, result) => {
+      if (err) throw err;
+      res.redirect("/");
+    }
+  );
 });
 
 app.listen(PORT, () =>

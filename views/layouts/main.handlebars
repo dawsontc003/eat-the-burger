@@ -51,16 +51,13 @@
     const createBurger = document.getElementById('addBurger')
 
 
-    console.log(createBurger)
-
-
     // Set up the event listener for the create button
     createBurger.addEventListener('click', () => {
         event.preventDefault();
         let newBurger = {
             burger: document.getElementById("burgerValue").value
         }
-        console.log(JSON.stringify(newBurger));
+
         // Grabs the value of the textarea and make a post request
         fetch(`/`, {
             method: "POST",
@@ -70,8 +67,8 @@
             },
             body: JSON.stringify(newBurger)
         }).then(() => {
-            console.log(newBurger)
-
+            // Reload the page
+            location.reload();
 
         })
 
