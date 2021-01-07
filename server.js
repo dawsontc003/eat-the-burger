@@ -21,7 +21,7 @@ let burgerAvailable;
 // Routes
 app.get("/", (req, res) => {
   connection.query(
-    "SELECT * FROM burgers WHERE devoured=true;",
+    "SELECT * FROM burgers WHERE devoured=false;",
     (err, data) => {
       if (err) throw err;
 
@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
     }
   );
   connection.query(
-    "SELECT * FROM burgers WHERE devoured=false;",
+    "SELECT * FROM burgers WHERE devoured=true;",
     (err, data1) => {
       if (err) throw err;
 
@@ -58,7 +58,7 @@ app.put("/:id", (req, res) => {
 });
 // Request response for insert of new burger
 app.post("/", (req, res) => {
-  let devoured = "1";
+  let devoured = "0";
   connection.query(
     "INSERT INTO burgers SET burger_name = ?, devoured = ?",
     [req.body.burger, devoured],
